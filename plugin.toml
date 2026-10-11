@@ -1,0 +1,128 @@
+# Concord reads this to install and run Four in a Row. Admins never edit it:
+# the settings below appear as forms in Concord (the channel's own settings
+# for create_field).
+
+[plugin]
+id = "concord-four-in-a-row"
+name = "Four in a Row"
+version = "0.1.0"            # release.go stamps the git tag here
+description = "Drop discs, get four in a row: against each other or the computer."
+source_url = "https://github.com/JMThomas00/concord-four-in-a-row"
+
+[process]
+restart_on_crash = true
+max_restarts = 5
+
+[process.entrypoint.linux]
+bin = "concord-four-in-a-row"
+[process.entrypoint.darwin]
+bin = "concord-four-in-a-row"
+[process.entrypoint.windows]
+bin = "concord-four-in-a-row.exe"
+
+[[channel_kind]]
+kind = "table"
+display_name = "Four in a Row Table"
+icon = "●"
+remote_pane = true
+
+  # How people find opponents -- the table kit's seating modes.
+  [[channel_kind.create_field]]
+  key = "seating"
+  label = "Seating"
+  type = "select"
+  options = ["seats", "challenge", "private"]
+  default = "seats"
+  help = "seats: one table, sit down to play · challenge: invite members from a lobby · private: your own games with chosen opponents"
+
+  [[channel_kind.create_field]]
+  key = "allow_spectators"
+  label = "Allow spectators"
+  type = "boolean"
+  default = "true"
+  help = "Let members who aren't playing watch games"
+
+  [[channel_kind.create_field]]
+  key = "computer_opponent"
+  label = "Computer opponent"
+  type = "boolean"
+  default = "true"
+  help = "Let players play against the computer"
+
+  [[channel_kind.create_field]]
+  key = "computer_level"
+  label = "Computer strength"
+  type = "select"
+  options = ["easy", "normal", "hard"]
+  default = "normal"
+  help = "How well the computer plays"
+
+  # The board size is chosen for each game, on the arcade's NEW GAME screen.
+
+# Achievements and the leaderboard. The table kit keeps every player's
+# record and unlocks these for you; members see them on Settings > About
+# > Achievements.
+[[achievement]]
+id = "first_win"
+name = "First Victory"
+description = "Win a game"
+tier = "bronze"
+
+[[achievement]]
+id = "wins_10"
+name = "Seasoned Player"
+description = "Win ten games"
+tier = "silver"
+
+[[achievement]]
+id = "wins_50"
+name = "Grandmaster of the Vineyard"
+description = "Win fifty games"
+tier = "gold"
+
+[[achievement]]
+id = "beat_computer"
+name = "Beat the Machine"
+description = "Beat the computer"
+icon = "🤖"
+
+[[achievement]]
+id = "streak_5"
+name = "On a Roll"
+description = "Win five games in a row"
+icon = "🔥"
+
+# Four in a Row's own (game/game.go, awards).
+[[achievement]]
+id = "diagonal"
+name = "On the Slant"
+description = "Win with a diagonal four"
+tier = "bronze"
+
+[[achievement]]
+id = "fork"
+name = "Two Ways Home"
+description = "Win a game with a FORK! in it"
+tier = "silver"
+
+[[achievement]]
+id = "sea_wall"
+name = "Sea Wall"
+description = "Block three fours in one game, and win it"
+tier = "silver"
+
+[[achievement]]
+id = "four_straight"
+name = "Four Straight"
+description = "Win with your first four discs"
+tier = "gold"
+
+[[achievement]]
+id = "last_disc"
+name = "Photo Finish"
+description = "Win with the last disc on the board"
+tier = "gold"
+
+[leaderboard]
+stat = "wins"
+label = "Wins"

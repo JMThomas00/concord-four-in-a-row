@@ -1,0 +1,5 @@
+/dist/
+/concord-four-in-a-row
+/concord-four-in-a-row.exe
+# the key that signs client code: keep it secret (concord-plugin keygen)
+/publisher.key
