@@ -25,10 +25,12 @@ On macOS, if it's blocked as being from an unidentified developer, run
 installed:** `go install github.com/JMThomas00/concord-four-in-a-row@latest`,
 then run `concord-four-in-a-row`.
 
-It starts with a menu: two players on one keyboard, against the computer at
-three levels, or over the network. For a network game, one player hosts and is
+It opens on the arcade, as in Concord: 1 PLAYER VS CPU at three levels,
+2 PLAYERS on one keyboard, or a NETWORK GAME. For a network game, one player hosts and is
 shown their address and a 6-character code; the other chooses join and types
-both.
+both. Your record, unlockables and hall of fame are kept on this computer, and the
+sounds play from the `client` folder that comes in the zip: keep it next to
+the program. (Installed with `go install`, only the menu sounds play.)
 
 ## Play it on a Concord server
 
